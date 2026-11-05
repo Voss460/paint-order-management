@@ -2,7 +2,7 @@ namespace PaintOrderManagement;
 public class PaintProduct : IBuyable
 {
     public readonly decimal TaxRate;
-    public const decimal DefaulyDiscount = 0.05m;
+    public const decimal DefaultDiscount = 0.05m;
     public string Name {get; set;}
     public PaintType Type {get; set;}
     public PaintSpecification Specification{get; set;}
@@ -24,10 +24,10 @@ public class PaintProduct : IBuyable
     }
     public decimal GetFinalPrice()
     {
-        decimal discountedPrice = Price * (1-DefaulyDiscount);
+        decimal discountedPrice = Price * (1-DefaultDiscount);
         return discountedPrice * (1+TaxRate);
     }
-    public void DisplaySpecification()
+    public void DisplayInfo()
     {
         Console.WriteLine($"Product: {Name}");
         Console.WriteLine($"Type: {Type}");
@@ -42,6 +42,6 @@ public class PaintProduct : IBuyable
         {
             return rate/100m;
         }
-        return DefaulyDiscount;
+        return DefaultDiscount;
     }
 }
